@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+
+import NavBar from './NavBar';
+import Home from './Home';
 import Soju from './Soju';
 import FriedChicken from './FriedChicken';
 import Ramen from './Ramen';
@@ -11,10 +14,15 @@ import Ramen from './Ramen';
  * 
  * App --> VendingMachine --> {Soju, FriedChicken, Ramen}
  */
+
+// move Browser Router up to App.js
 function VendingMachine() {
   return (
     <div>
-      <BrowserRouter>
+        <NavBar />
+        <Route exact path='/'>
+          <Home />
+        </Route>
         <Route exact path='/soju'>
           <Soju />
         </Route>
@@ -24,7 +32,6 @@ function VendingMachine() {
         <Route exact path='/ramen'>
           <Ramen />
         </Route>
-      </BrowserRouter>
     </div>)
 }
 
